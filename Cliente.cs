@@ -22,5 +22,5 @@ public class Cliente
         Console.WriteLine($"Cliente: {Nombre} {Apellido}, Documento {NroDoc}, Tipo: {TipoCliente}" );
     }
 
-
+   
 }
