@@ -1,0 +1,7 @@
+C:\Users\usuario\source\repos\Palacio_de_las_verduras\obj\Debug\Palacio_de_las_verduras.csproj.AssemblyReference.cache
+C:\Users\usuario\source\repos\Palacio_de_las_verduras\obj\Debug\Palacio_de_las_verduras.csproj.CoreCompileInputs.cache
+C:\Users\usuario\source\repos\Palacio_de_las_verduras\bin\Debug\ConsoleApp5.exe.config
+C:\Users\usuario\source\repos\Palacio_de_las_verduras\bin\Debug\ConsoleApp5.exe
+C:\Users\usuario\source\repos\Palacio_de_las_verduras\bin\Debug\ConsoleApp5.pdb
+C:\Users\usuario\source\repos\Palacio_de_las_verduras\obj\Debug\ConsoleApp5.exe
+C:\Users\usuario\source\repos\Palacio_de_las_verduras\obj\Debug\ConsoleApp5.pdb
