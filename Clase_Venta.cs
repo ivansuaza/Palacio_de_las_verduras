@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp5
+namespace Palacio_de_las_verduras
 {
     public class Venta
     {
@@ -14,13 +14,13 @@ namespace ConsoleApp5
         public List<Producto> Productos { get; private set; }
         public decimal Total { get; private set; }
 
-        public Venta(int id, Cliente cliente, Empleado empleado, List<Producto> productos)
+        public Venta(int id, Cliente cliente, Empleado empleado, List<Producto> productos, decimal total)
         {
             IdVenta = id;
             Cliente = cliente;
             Empleado = empleado;
             Productos = productos;
-            Total = CalcularTotal();
+            Total = total; // Usamos el total que se pasa como argumento
         }
 
         private decimal CalcularTotal()
@@ -35,7 +35,7 @@ namespace ConsoleApp5
 
         public void MostrarVenta()
         {
-            Console.WriteLine($"Venta ID: {IdVenta} - Cliente: {Cliente.Nombre} - Total: ${Total}");
+            Console.WriteLine($"Venta ID: {IdVenta} - Cliente: {Cliente.Nombre} - Empleado: {Empleado.Nombre} - Total: ${Total}");
         }
     }
 }
