@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp5
+namespace Palacio_de_las_verduras
 {
     public class Empleado : Usuario
     {
@@ -18,7 +18,7 @@ namespace ConsoleApp5
 
         public override void MostrarDatos()
         {
-            Console.WriteLine($"Empleado: {Nombre} {Apellido} - Cargo: {Cargo}");
+            Console.WriteLine($"ID Empleado: {IdUsuario} - Empleado: {Nombre} {Apellido} - Cargo: {Cargo}");
         }
     }
 }

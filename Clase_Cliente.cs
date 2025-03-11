@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp5{
+namespace Palacio_de_las_verduras
+{
    
-    
         public class Cliente : Usuario
         {
             public Cliente(int id, string nombre, string apellido, string correo)
@@ -14,7 +14,7 @@ namespace ConsoleApp5{
 
             public override void MostrarDatos()
             {
-                Console.WriteLine($"Cliente: {Nombre} {Apellido} - Correo: {Correo}");
+                Console.WriteLine($"ID Cliente: {IdUsuario} - Cliente: {Nombre} {Apellido} - Correo: {Correo}");
             }
         }
     }
