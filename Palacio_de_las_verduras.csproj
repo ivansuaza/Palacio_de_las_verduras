@@ -50,7 +50,9 @@
     <Compile Include="Clase_Venta.cs" />
     <Compile Include="Interface1.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+	<Compile Include="Metodos.cs" />
+	<Compile Include="ProductoVendido.cs" />
+	  <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
