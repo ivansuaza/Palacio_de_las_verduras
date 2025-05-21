@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="527d9ac863764a8bbd24a033aa170ba5" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="dbFruverModel.Detalle_Pedido" Width="1.5" PointX="12.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblCargo" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblClasifcProducto" Width="1.5" PointX="6" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblCliente" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblCuidad" Width="1.5" PointX="6" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblDepartamento" Width="1.5" PointX="3.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblDireccionCliente" Width="1.5" PointX="8.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblDireccionEmpleado" Width="1.5" PointX="11.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblEmpleado" Width="1.5" PointX="6" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblFormaDePago" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblGenero" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblPedido" Width="1.5" PointX="10.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblPedido_Direc" Width="1.5" PointX="13.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblProducto" Width="1.5" PointX="8.25" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblTelefonoCliente" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblTelefonoEmpleado" Width="1.5" PointX="13.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblTipo_Venta" Width="1.5" PointX="8.25" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tbltipoDoc" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblTipoTel" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFruverModel.tblUsuario" Width="1.5" PointX="8.25" PointY="16.75" IsExpanded="true" />
+        <AssociationConnector Association="dbFruverModel.FK__Detalle_P__Codig__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__Detalle_P__idPro__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblEmplea__idCar__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblProduc__Activ__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblClient__idGen__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblClient__idTip__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblDirecc__idCli__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblPedido__idCli__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblTelefo__idCli__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblCuidad__idDpt__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblDirecc__idCui__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblDirecc__idCui__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblPedido__idPed__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblDirecc__idEmp__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblEmplea__Activ__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblEmplea__idTip__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblTelefo__idEmp__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblUsuari__Activ__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblPedido__idFor__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblPedido__idPed__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblPedido__idPro__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblPedido__idTip__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblPedido__idUsu__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblTelefo__idTip__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFruverModel.FK__tblTelefo__idEmp__571DF1D5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
