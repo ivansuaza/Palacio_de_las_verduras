@@ -1,0 +1,1532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbFruverModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Detalle_Pedido">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Descuento" Type="float" />
+          <Property Name="PrecioUnitario" Type="float" Nullable="false" />
+          <Property Name="subtotal" Type="float" Nullable="false" />
+          <Property Name="TotalPagar" Type="float" Nullable="false" />
+          <Property Name="iva" Type="float" />
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="CodigoPedido" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCargo">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblClasifcProducto">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCliente">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="idTipoDoc" Type="int" Nullable="false" />
+          <Property Name="idGenero" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NroDoc" Type="int" Nullable="false" />
+          <Property Name="Tipo_Cliente" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCuidad">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="idDpto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDepartamento">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDireccionCliente">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="idCuidad" Type="int" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDireccionEmpleado">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="idEmpleado" Type="int" />
+          <Property Name="idCuidad" Type="int" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEmpleado">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
+          <Property Name="NroDoc" Type="int" Nullable="false" />
+          <Property Name="idGenero" Type="int" Nullable="false" />
+          <Property Name="idCargo" Type="int" Nullable="false" />
+          <Property Name="idTipoDoc" Type="int" Nullable="false" />
+          <Property Name="fecha_Ingreso" Type="varchar" MaxLength="30" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Salario" Type="float" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFormaDePago">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblGenero">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPedido">
+          <Key>
+            <PropertyRef Name="Numero_Pedido" />
+          </Key>
+          <Property Name="Numero_Pedido" Type="int" Nullable="false" />
+          <Property Name="Fecha_Pedido" Type="date" Nullable="false" />
+          <Property Name="Fecha_Entrega" Type="date" Nullable="false" />
+          <Property Name="Domicilio" Type="bit" Nullable="false" />
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="idTipoVenta" Type="int" Nullable="false" />
+          <Property Name="idFormaPago" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPedido_Direc">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="idDireccion" Type="int" Nullable="false" />
+          <Property Name="idPedido" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProducto">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo_Clasif" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="float" Nullable="false" />
+          <Property Name="iva" Type="float" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTelefonoCliente">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="NumTelefono" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="idTipoTel" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTelefonoEmpleado">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="NumTelefono" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="idTipoTel" Type="int" Nullable="false" />
+          <Property Name="idEmpleado" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTipo_Venta">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descuento" Type="float" />
+        </EntityType>
+        <EntityType Name="tbltipoDoc">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTipoTel">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Codigo_Empleado" Type="int" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Detalle_P__Codig__797309D9">
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="1" />
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPedido">
+              <PropertyRef Name="Numero_Pedido" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="CodigoPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Detalle_P__idPro__787EE5A0">
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="1" />
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblClient__idGen__5EBF139D">
+          <End Role="tblGenero" Type="Self.tblGenero" Multiplicity="1" />
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGenero">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblCliente">
+              <PropertyRef Name="idGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblClient__idTip__5DCAEF64">
+          <End Role="tbltipoDoc" Type="Self.tbltipoDoc" Multiplicity="1" />
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbltipoDoc">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblCliente">
+              <PropertyRef Name="idTipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCuidad__idDpt__47DBAE45">
+          <End Role="tblDepartamento" Type="Self.tblDepartamento" Multiplicity="1" />
+          <End Role="tblCuidad" Type="Self.tblCuidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDepartamento">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblCuidad">
+              <PropertyRef Name="idDpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDirecc__idCli__656C112C">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblDireccionCliente" Type="Self.tblDireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblDireccionCliente">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDirecc__idCui__5441852A">
+          <End Role="tblCuidad" Type="Self.tblCuidad" Multiplicity="1" />
+          <End Role="tblDireccionEmpleado" Type="Self.tblDireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCuidad">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblDireccionEmpleado">
+              <PropertyRef Name="idCuidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDirecc__idCui__66603565">
+          <End Role="tblCuidad" Type="Self.tblCuidad" Multiplicity="1" />
+          <End Role="tblDireccionCliente" Type="Self.tblDireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCuidad">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblDireccionCliente">
+              <PropertyRef Name="idCuidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDirecc__idEmp__534D60F1">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="0..1" />
+          <End Role="tblDireccionEmpleado" Type="Self.tblDireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblDireccionEmpleado">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblEmplea__Activ__4E88ABD4">
+          <End Role="tblGenero" Type="Self.tblGenero" Multiplicity="1" />
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGenero">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblEmpleado">
+              <PropertyRef Name="idGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblEmplea__idCar__4F7CD00D">
+          <End Role="tblCargo" Type="Self.tblCargo" Multiplicity="1" />
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCargo">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblEmpleado">
+              <PropertyRef Name="idCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblEmplea__idTip__5070F446">
+          <End Role="tbltipoDoc" Type="Self.tbltipoDoc" Multiplicity="1" />
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbltipoDoc">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblEmpleado">
+              <PropertyRef Name="idTipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idCli__6A30C649">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idFor__6D0D32F4">
+          <End Role="tblFormaDePago" Type="Self.tblFormaDePago" Multiplicity="1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFormaDePago">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="idFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idPed__6FE99F9F">
+          <End Role="tblDireccionCliente" Type="Self.tblDireccionCliente" Multiplicity="1" />
+          <End Role="tblPedido_Direc" Type="Self.tblPedido_Direc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDireccionCliente">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido_Direc">
+              <PropertyRef Name="idDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idPed__70DDC3D8">
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="1" />
+          <End Role="tblPedido_Direc" Type="Self.tblPedido_Direc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPedido">
+              <PropertyRef Name="Numero_Pedido" />
+            </Principal>
+            <Dependent Role="tblPedido_Direc">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idPro__693CA210">
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idTip__6C190EBB">
+          <End Role="tblTipo_Venta" Type="Self.tblTipo_Venta" Multiplicity="1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipo_Venta">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="idTipoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idUsu__6B24EA82">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__Activ__398D8EEE">
+          <End Role="tblClasifcProducto" Type="Self.tblClasifcProducto" Multiplicity="1" />
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClasifcProducto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblProducto">
+              <PropertyRef Name="Codigo_Clasif" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTelefo__idCli__628FA481">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblTelefonoCliente" Type="Self.tblTelefonoCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblTelefonoCliente">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTelefo__idEmp__571DF1D5">
+          <End Role="tblTipoTel" Type="Self.tblTipoTel" Multiplicity="1" />
+          <End Role="tblTelefonoEmpleado" Type="Self.tblTelefonoEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoTel">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblTelefonoEmpleado">
+              <PropertyRef Name="idTipoTel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTelefo__idEmp__5812160E">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="0..1" />
+          <End Role="tblTelefonoEmpleado" Type="Self.tblTelefonoEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblTelefonoEmpleado">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTelefo__idTip__619B8048">
+          <End Role="tblTipoTel" Type="Self.tblTipoTel" Multiplicity="1" />
+          <End Role="tblTelefonoCliente" Type="Self.tblTelefonoCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoTel">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblTelefonoCliente">
+              <PropertyRef Name="idTipoTel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUsuari__Activ__5AEE82B9">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="1" />
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblUsuario">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbFruverModelStoreContainer">
+          <EntitySet Name="Detalle_Pedido" EntityType="Self.Detalle_Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCargo" EntityType="Self.tblCargo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClasifcProducto" EntityType="Self.tblClasifcProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCliente" EntityType="Self.tblCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCuidad" EntityType="Self.tblCuidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDepartamento" EntityType="Self.tblDepartamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDireccionCliente" EntityType="Self.tblDireccionCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDireccionEmpleado" EntityType="Self.tblDireccionEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpleado" EntityType="Self.tblEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFormaDePago" EntityType="Self.tblFormaDePago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGenero" EntityType="Self.tblGenero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPedido" EntityType="Self.tblPedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPedido_Direc" EntityType="Self.tblPedido_Direc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProducto" EntityType="Self.tblProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTelefonoCliente" EntityType="Self.tblTelefonoCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTelefonoEmpleado" EntityType="Self.tblTelefonoEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTipo_Venta" EntityType="Self.tblTipo_Venta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbltipoDoc" EntityType="Self.tbltipoDoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTipoTel" EntityType="Self.tblTipoTel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Detalle_P__Codig__797309D9" Association="Self.FK__Detalle_P__Codig__797309D9">
+            <End Role="tblPedido" EntitySet="tblPedido" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Detalle_P__idPro__787EE5A0" Association="Self.FK__Detalle_P__idPro__787EE5A0">
+            <End Role="tblProducto" EntitySet="tblProducto" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblClient__idGen__5EBF139D" Association="Self.FK__tblClient__idGen__5EBF139D">
+            <End Role="tblGenero" EntitySet="tblGenero" />
+            <End Role="tblCliente" EntitySet="tblCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblClient__idTip__5DCAEF64" Association="Self.FK__tblClient__idTip__5DCAEF64">
+            <End Role="tbltipoDoc" EntitySet="tbltipoDoc" />
+            <End Role="tblCliente" EntitySet="tblCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCuidad__idDpt__47DBAE45" Association="Self.FK__tblCuidad__idDpt__47DBAE45">
+            <End Role="tblDepartamento" EntitySet="tblDepartamento" />
+            <End Role="tblCuidad" EntitySet="tblCuidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDirecc__idCli__656C112C" Association="Self.FK__tblDirecc__idCli__656C112C">
+            <End Role="tblCliente" EntitySet="tblCliente" />
+            <End Role="tblDireccionCliente" EntitySet="tblDireccionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDirecc__idCui__5441852A" Association="Self.FK__tblDirecc__idCui__5441852A">
+            <End Role="tblCuidad" EntitySet="tblCuidad" />
+            <End Role="tblDireccionEmpleado" EntitySet="tblDireccionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDirecc__idCui__66603565" Association="Self.FK__tblDirecc__idCui__66603565">
+            <End Role="tblCuidad" EntitySet="tblCuidad" />
+            <End Role="tblDireccionCliente" EntitySet="tblDireccionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDirecc__idEmp__534D60F1" Association="Self.FK__tblDirecc__idEmp__534D60F1">
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+            <End Role="tblDireccionEmpleado" EntitySet="tblDireccionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblEmplea__Activ__4E88ABD4" Association="Self.FK__tblEmplea__Activ__4E88ABD4">
+            <End Role="tblGenero" EntitySet="tblGenero" />
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblEmplea__idCar__4F7CD00D" Association="Self.FK__tblEmplea__idCar__4F7CD00D">
+            <End Role="tblCargo" EntitySet="tblCargo" />
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblEmplea__idTip__5070F446" Association="Self.FK__tblEmplea__idTip__5070F446">
+            <End Role="tbltipoDoc" EntitySet="tbltipoDoc" />
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idCli__6A30C649" Association="Self.FK__tblPedido__idCli__6A30C649">
+            <End Role="tblCliente" EntitySet="tblCliente" />
+            <End Role="tblPedido" EntitySet="tblPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idFor__6D0D32F4" Association="Self.FK__tblPedido__idFor__6D0D32F4">
+            <End Role="tblFormaDePago" EntitySet="tblFormaDePago" />
+            <End Role="tblPedido" EntitySet="tblPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idPed__6FE99F9F" Association="Self.FK__tblPedido__idPed__6FE99F9F">
+            <End Role="tblDireccionCliente" EntitySet="tblDireccionCliente" />
+            <End Role="tblPedido_Direc" EntitySet="tblPedido_Direc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idPed__70DDC3D8" Association="Self.FK__tblPedido__idPed__70DDC3D8">
+            <End Role="tblPedido" EntitySet="tblPedido" />
+            <End Role="tblPedido_Direc" EntitySet="tblPedido_Direc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idPro__693CA210" Association="Self.FK__tblPedido__idPro__693CA210">
+            <End Role="tblProducto" EntitySet="tblProducto" />
+            <End Role="tblPedido" EntitySet="tblPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idTip__6C190EBB" Association="Self.FK__tblPedido__idTip__6C190EBB">
+            <End Role="tblTipo_Venta" EntitySet="tblTipo_Venta" />
+            <End Role="tblPedido" EntitySet="tblPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idUsu__6B24EA82" Association="Self.FK__tblPedido__idUsu__6B24EA82">
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+            <End Role="tblPedido" EntitySet="tblPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__Activ__398D8EEE" Association="Self.FK__tblProduc__Activ__398D8EEE">
+            <End Role="tblClasifcProducto" EntitySet="tblClasifcProducto" />
+            <End Role="tblProducto" EntitySet="tblProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTelefo__idCli__628FA481" Association="Self.FK__tblTelefo__idCli__628FA481">
+            <End Role="tblCliente" EntitySet="tblCliente" />
+            <End Role="tblTelefonoCliente" EntitySet="tblTelefonoCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTelefo__idEmp__571DF1D5" Association="Self.FK__tblTelefo__idEmp__571DF1D5">
+            <End Role="tblTipoTel" EntitySet="tblTipoTel" />
+            <End Role="tblTelefonoEmpleado" EntitySet="tblTelefonoEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTelefo__idEmp__5812160E" Association="Self.FK__tblTelefo__idEmp__5812160E">
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+            <End Role="tblTelefonoEmpleado" EntitySet="tblTelefonoEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTelefo__idTip__619B8048" Association="Self.FK__tblTelefo__idTip__619B8048">
+            <End Role="tblTipoTel" EntitySet="tblTipoTel" />
+            <End Role="tblTelefonoCliente" EntitySet="tblTelefonoCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUsuari__Activ__5AEE82B9" Association="Self.FK__tblUsuari__Activ__5AEE82B9">
+            <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbFruverModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Detalle_Pedido">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="PrecioUnitario" Type="Double" Nullable="false" />
+          <Property Name="subtotal" Type="Double" Nullable="false" />
+          <Property Name="TotalPagar" Type="Double" Nullable="false" />
+          <Property Name="iva" Type="Double" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="CodigoPedido" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblPedido" Relationship="Self.FK__Detalle_P__Codig__797309D9" FromRole="Detalle_Pedido" ToRole="tblPedido" />
+          <NavigationProperty Name="tblProducto" Relationship="Self.FK__Detalle_P__idPro__787EE5A0" FromRole="Detalle_Pedido" ToRole="tblProducto" />
+        </EntityType>
+        <EntityType Name="tblCargo">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblEmpleadoes" Relationship="Self.FK__tblEmplea__idCar__4F7CD00D" FromRole="tblCargo" ToRole="tblEmpleado" />
+        </EntityType>
+        <EntityType Name="tblClasifcProducto">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProductoes" Relationship="Self.FK__tblProduc__Activ__398D8EEE" FromRole="tblClasifcProducto" ToRole="tblProducto" />
+        </EntityType>
+        <EntityType Name="tblCliente">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="idTipoDoc" Type="Int32" Nullable="false" />
+          <Property Name="idGenero" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NroDoc" Type="Int32" Nullable="false" />
+          <Property Name="Tipo_Cliente" Type="Int32" />
+          <NavigationProperty Name="tblGenero" Relationship="Self.FK__tblClient__idGen__5EBF139D" FromRole="tblCliente" ToRole="tblGenero" />
+          <NavigationProperty Name="tbltipoDoc" Relationship="Self.FK__tblClient__idTip__5DCAEF64" FromRole="tblCliente" ToRole="tbltipoDoc" />
+          <NavigationProperty Name="tblDireccionClientes" Relationship="Self.FK__tblDirecc__idCli__656C112C" FromRole="tblCliente" ToRole="tblDireccionCliente" />
+          <NavigationProperty Name="tblPedidoes" Relationship="Self.FK__tblPedido__idCli__6A30C649" FromRole="tblCliente" ToRole="tblPedido" />
+          <NavigationProperty Name="tblTelefonoClientes" Relationship="Self.FK__tblTelefo__idCli__628FA481" FromRole="tblCliente" ToRole="tblTelefonoCliente" />
+        </EntityType>
+        <EntityType Name="tblCuidad">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idDpto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblDepartamento" Relationship="Self.FK__tblCuidad__idDpt__47DBAE45" FromRole="tblCuidad" ToRole="tblDepartamento" />
+          <NavigationProperty Name="tblDireccionEmpleadoes" Relationship="Self.FK__tblDirecc__idCui__5441852A" FromRole="tblCuidad" ToRole="tblDireccionEmpleado" />
+          <NavigationProperty Name="tblDireccionClientes" Relationship="Self.FK__tblDirecc__idCui__66603565" FromRole="tblCuidad" ToRole="tblDireccionCliente" />
+        </EntityType>
+        <EntityType Name="tblDepartamento">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblCuidads" Relationship="Self.FK__tblCuidad__idDpt__47DBAE45" FromRole="tblDepartamento" ToRole="tblCuidad" />
+        </EntityType>
+        <EntityType Name="tblDireccionCliente">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="idCuidad" Type="Int32" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblDirecc__idCli__656C112C" FromRole="tblDireccionCliente" ToRole="tblCliente" />
+          <NavigationProperty Name="tblCuidad" Relationship="Self.FK__tblDirecc__idCui__66603565" FromRole="tblDireccionCliente" ToRole="tblCuidad" />
+          <NavigationProperty Name="tblPedido_Direc" Relationship="Self.FK__tblPedido__idPed__6FE99F9F" FromRole="tblDireccionCliente" ToRole="tblPedido_Direc" />
+        </EntityType>
+        <EntityType Name="tblDireccionEmpleado">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="idEmpleado" Type="Int32" />
+          <Property Name="idCuidad" Type="Int32" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCuidad" Relationship="Self.FK__tblDirecc__idCui__5441852A" FromRole="tblDireccionEmpleado" ToRole="tblCuidad" />
+          <NavigationProperty Name="tblEmpleado" Relationship="Self.FK__tblDirecc__idEmp__534D60F1" FromRole="tblDireccionEmpleado" ToRole="tblEmpleado" />
+        </EntityType>
+        <EntityType Name="tblEmpleado">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="NroDoc" Type="Int32" Nullable="false" />
+          <Property Name="idGenero" Type="Int32" Nullable="false" />
+          <Property Name="idCargo" Type="Int32" Nullable="false" />
+          <Property Name="idTipoDoc" Type="Int32" Nullable="false" />
+          <Property Name="fecha_Ingreso" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Salario" Type="Double" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCargo" Relationship="Self.FK__tblEmplea__idCar__4F7CD00D" FromRole="tblEmpleado" ToRole="tblCargo" />
+          <NavigationProperty Name="tblDireccionEmpleadoes" Relationship="Self.FK__tblDirecc__idEmp__534D60F1" FromRole="tblEmpleado" ToRole="tblDireccionEmpleado" />
+          <NavigationProperty Name="tblGenero" Relationship="Self.FK__tblEmplea__Activ__4E88ABD4" FromRole="tblEmpleado" ToRole="tblGenero" />
+          <NavigationProperty Name="tbltipoDoc" Relationship="Self.FK__tblEmplea__idTip__5070F446" FromRole="tblEmpleado" ToRole="tbltipoDoc" />
+          <NavigationProperty Name="tblTelefonoEmpleadoes" Relationship="Self.FK__tblTelefo__idEmp__5812160E" FromRole="tblEmpleado" ToRole="tblTelefonoEmpleado" />
+          <NavigationProperty Name="tblUsuarios" Relationship="Self.FK__tblUsuari__Activ__5AEE82B9" FromRole="tblEmpleado" ToRole="tblUsuario" />
+        </EntityType>
+        <EntityType Name="tblFormaDePago">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblPedidoes" Relationship="Self.FK__tblPedido__idFor__6D0D32F4" FromRole="tblFormaDePago" ToRole="tblPedido" />
+        </EntityType>
+        <EntityType Name="tblGenero">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblClientes" Relationship="Self.FK__tblClient__idGen__5EBF139D" FromRole="tblGenero" ToRole="tblCliente" />
+          <NavigationProperty Name="tblEmpleadoes" Relationship="Self.FK__tblEmplea__Activ__4E88ABD4" FromRole="tblGenero" ToRole="tblEmpleado" />
+        </EntityType>
+        <EntityType Name="tblPedido">
+          <Key>
+            <PropertyRef Name="Numero_Pedido" />
+          </Key>
+          <Property Name="Numero_Pedido" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Pedido" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_Entrega" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Domicilio" Type="Boolean" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="idTipoVenta" Type="Int32" Nullable="false" />
+          <Property Name="idFormaPago" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Detalle_Pedido" Relationship="Self.FK__Detalle_P__Codig__797309D9" FromRole="tblPedido" ToRole="Detalle_Pedido" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblPedido__idCli__6A30C649" FromRole="tblPedido" ToRole="tblCliente" />
+          <NavigationProperty Name="tblFormaDePago" Relationship="Self.FK__tblPedido__idFor__6D0D32F4" FromRole="tblPedido" ToRole="tblFormaDePago" />
+          <NavigationProperty Name="tblPedido_Direc" Relationship="Self.FK__tblPedido__idPed__70DDC3D8" FromRole="tblPedido" ToRole="tblPedido_Direc" />
+          <NavigationProperty Name="tblProducto" Relationship="Self.FK__tblPedido__idPro__693CA210" FromRole="tblPedido" ToRole="tblProducto" />
+          <NavigationProperty Name="tblTipo_Venta" Relationship="Self.FK__tblPedido__idTip__6C190EBB" FromRole="tblPedido" ToRole="tblTipo_Venta" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK__tblPedido__idUsu__6B24EA82" FromRole="tblPedido" ToRole="tblUsuario" />
+        </EntityType>
+        <EntityType Name="tblPedido_Direc">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="idDireccion" Type="Int32" Nullable="false" />
+          <Property Name="idPedido" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblDireccionCliente" Relationship="Self.FK__tblPedido__idPed__6FE99F9F" FromRole="tblPedido_Direc" ToRole="tblDireccionCliente" />
+          <NavigationProperty Name="tblPedido" Relationship="Self.FK__tblPedido__idPed__70DDC3D8" FromRole="tblPedido_Direc" ToRole="tblPedido" />
+        </EntityType>
+        <EntityType Name="tblProducto">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo_Clasif" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Double" Nullable="false" />
+          <Property Name="iva" Type="Double" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Detalle_Pedido" Relationship="Self.FK__Detalle_P__idPro__787EE5A0" FromRole="tblProducto" ToRole="Detalle_Pedido" />
+          <NavigationProperty Name="tblClasifcProducto" Relationship="Self.FK__tblProduc__Activ__398D8EEE" FromRole="tblProducto" ToRole="tblClasifcProducto" />
+          <NavigationProperty Name="tblPedidoes" Relationship="Self.FK__tblPedido__idPro__693CA210" FromRole="tblProducto" ToRole="tblPedido" />
+        </EntityType>
+        <EntityType Name="tblTelefonoCliente">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="NumTelefono" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="idTipoTel" Type="Int32" Nullable="false" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK__tblTelefo__idCli__628FA481" FromRole="tblTelefonoCliente" ToRole="tblCliente" />
+          <NavigationProperty Name="tblTipoTel" Relationship="Self.FK__tblTelefo__idTip__619B8048" FromRole="tblTelefonoCliente" ToRole="tblTipoTel" />
+        </EntityType>
+        <EntityType Name="tblTelefonoEmpleado">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="NumTelefono" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="idTipoTel" Type="Int32" Nullable="false" />
+          <Property Name="idEmpleado" Type="Int32" />
+          <NavigationProperty Name="tblEmpleado" Relationship="Self.FK__tblTelefo__idEmp__5812160E" FromRole="tblTelefonoEmpleado" ToRole="tblEmpleado" />
+          <NavigationProperty Name="tblTipoTel" Relationship="Self.FK__tblTelefo__idEmp__571DF1D5" FromRole="tblTelefonoEmpleado" ToRole="tblTipoTel" />
+        </EntityType>
+        <EntityType Name="tblTipo_Venta">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descuento" Type="Double" />
+          <NavigationProperty Name="tblPedidoes" Relationship="Self.FK__tblPedido__idTip__6C190EBB" FromRole="tblTipo_Venta" ToRole="tblPedido" />
+        </EntityType>
+        <EntityType Name="tbltipoDoc">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblClientes" Relationship="Self.FK__tblClient__idTip__5DCAEF64" FromRole="tbltipoDoc" ToRole="tblCliente" />
+          <NavigationProperty Name="tblEmpleadoes" Relationship="Self.FK__tblEmplea__idTip__5070F446" FromRole="tbltipoDoc" ToRole="tblEmpleado" />
+        </EntityType>
+        <EntityType Name="tblTipoTel">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblTelefonoClientes" Relationship="Self.FK__tblTelefo__idTip__619B8048" FromRole="tblTipoTel" ToRole="tblTelefonoCliente" />
+          <NavigationProperty Name="tblTelefonoEmpleadoes" Relationship="Self.FK__tblTelefo__idEmp__571DF1D5" FromRole="tblTipoTel" ToRole="tblTelefonoEmpleado" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_Empleado" Type="Int32" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblEmpleado" Relationship="Self.FK__tblUsuari__Activ__5AEE82B9" FromRole="tblUsuario" ToRole="tblEmpleado" />
+          <NavigationProperty Name="tblPedidoes" Relationship="Self.FK__tblPedido__idUsu__6B24EA82" FromRole="tblUsuario" ToRole="tblPedido" />
+        </EntityType>
+        <Association Name="FK__Detalle_P__Codig__797309D9">
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="1" />
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPedido">
+              <PropertyRef Name="Numero_Pedido" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="CodigoPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Detalle_P__idPro__787EE5A0">
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="1" />
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblEmplea__idCar__4F7CD00D">
+          <End Role="tblCargo" Type="Self.tblCargo" Multiplicity="1" />
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCargo">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblEmpleado">
+              <PropertyRef Name="idCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__Activ__398D8EEE">
+          <End Role="tblClasifcProducto" Type="Self.tblClasifcProducto" Multiplicity="1" />
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClasifcProducto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblProducto">
+              <PropertyRef Name="Codigo_Clasif" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblClient__idGen__5EBF139D">
+          <End Role="tblGenero" Type="Self.tblGenero" Multiplicity="1" />
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGenero">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblCliente">
+              <PropertyRef Name="idGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblClient__idTip__5DCAEF64">
+          <End Role="tbltipoDoc" Type="Self.tbltipoDoc" Multiplicity="1" />
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbltipoDoc">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblCliente">
+              <PropertyRef Name="idTipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDirecc__idCli__656C112C">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblDireccionCliente" Type="Self.tblDireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblDireccionCliente">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idCli__6A30C649">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTelefo__idCli__628FA481">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblTelefonoCliente" Type="Self.tblTelefonoCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblTelefonoCliente">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCuidad__idDpt__47DBAE45">
+          <End Role="tblDepartamento" Type="Self.tblDepartamento" Multiplicity="1" />
+          <End Role="tblCuidad" Type="Self.tblCuidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDepartamento">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblCuidad">
+              <PropertyRef Name="idDpto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDirecc__idCui__5441852A">
+          <End Role="tblCuidad" Type="Self.tblCuidad" Multiplicity="1" />
+          <End Role="tblDireccionEmpleado" Type="Self.tblDireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCuidad">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblDireccionEmpleado">
+              <PropertyRef Name="idCuidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDirecc__idCui__66603565">
+          <End Role="tblCuidad" Type="Self.tblCuidad" Multiplicity="1" />
+          <End Role="tblDireccionCliente" Type="Self.tblDireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCuidad">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblDireccionCliente">
+              <PropertyRef Name="idCuidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idPed__6FE99F9F">
+          <End Role="tblDireccionCliente" Type="Self.tblDireccionCliente" Multiplicity="1" />
+          <End Role="tblPedido_Direc" Type="Self.tblPedido_Direc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDireccionCliente">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido_Direc">
+              <PropertyRef Name="idDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDirecc__idEmp__534D60F1">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="0..1" />
+          <End Role="tblDireccionEmpleado" Type="Self.tblDireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblDireccionEmpleado">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblEmplea__Activ__4E88ABD4">
+          <End Role="tblGenero" Type="Self.tblGenero" Multiplicity="1" />
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGenero">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblEmpleado">
+              <PropertyRef Name="idGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblEmplea__idTip__5070F446">
+          <End Role="tbltipoDoc" Type="Self.tbltipoDoc" Multiplicity="1" />
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbltipoDoc">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblEmpleado">
+              <PropertyRef Name="idTipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTelefo__idEmp__5812160E">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="0..1" />
+          <End Role="tblTelefonoEmpleado" Type="Self.tblTelefonoEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblTelefonoEmpleado">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUsuari__Activ__5AEE82B9">
+          <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="1" />
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleado">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblUsuario">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idFor__6D0D32F4">
+          <End Role="tblFormaDePago" Type="Self.tblFormaDePago" Multiplicity="1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFormaDePago">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="idFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idPed__70DDC3D8">
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="1" />
+          <End Role="tblPedido_Direc" Type="Self.tblPedido_Direc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPedido">
+              <PropertyRef Name="Numero_Pedido" />
+            </Principal>
+            <Dependent Role="tblPedido_Direc">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idPro__693CA210">
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idTip__6C190EBB">
+          <End Role="tblTipo_Venta" Type="Self.tblTipo_Venta" Multiplicity="1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipo_Venta">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="idTipoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPedido__idUsu__6B24EA82">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblPedido" Type="Self.tblPedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblPedido">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTelefo__idTip__619B8048">
+          <End Role="tblTipoTel" Type="Self.tblTipoTel" Multiplicity="1" />
+          <End Role="tblTelefonoCliente" Type="Self.tblTelefonoCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoTel">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblTelefonoCliente">
+              <PropertyRef Name="idTipoTel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTelefo__idEmp__571DF1D5">
+          <End Role="tblTipoTel" Type="Self.tblTipoTel" Multiplicity="1" />
+          <End Role="tblTelefonoEmpleado" Type="Self.tblTelefonoEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoTel">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="tblTelefonoEmpleado">
+              <PropertyRef Name="idTipoTel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbFruverEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Detalle_Pedido" EntityType="Self.Detalle_Pedido" />
+          <EntitySet Name="tblCargoes" EntityType="Self.tblCargo" />
+          <EntitySet Name="tblClasifcProductoes" EntityType="Self.tblClasifcProducto" />
+          <EntitySet Name="tblClientes" EntityType="Self.tblCliente" />
+          <EntitySet Name="tblCuidads" EntityType="Self.tblCuidad" />
+          <EntitySet Name="tblDepartamentoes" EntityType="Self.tblDepartamento" />
+          <EntitySet Name="tblDireccionClientes" EntityType="Self.tblDireccionCliente" />
+          <EntitySet Name="tblDireccionEmpleadoes" EntityType="Self.tblDireccionEmpleado" />
+          <EntitySet Name="tblEmpleadoes" EntityType="Self.tblEmpleado" />
+          <EntitySet Name="tblFormaDePagoes" EntityType="Self.tblFormaDePago" />
+          <EntitySet Name="tblGeneroes" EntityType="Self.tblGenero" />
+          <EntitySet Name="tblPedidoes" EntityType="Self.tblPedido" />
+          <EntitySet Name="tblPedido_Direc" EntityType="Self.tblPedido_Direc" />
+          <EntitySet Name="tblProductoes" EntityType="Self.tblProducto" />
+          <EntitySet Name="tblTelefonoClientes" EntityType="Self.tblTelefonoCliente" />
+          <EntitySet Name="tblTelefonoEmpleadoes" EntityType="Self.tblTelefonoEmpleado" />
+          <EntitySet Name="tblTipo_Venta" EntityType="Self.tblTipo_Venta" />
+          <EntitySet Name="tbltipoDocs" EntityType="Self.tbltipoDoc" />
+          <EntitySet Name="tblTipoTels" EntityType="Self.tblTipoTel" />
+          <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuario" />
+          <AssociationSet Name="FK__Detalle_P__Codig__797309D9" Association="Self.FK__Detalle_P__Codig__797309D9">
+            <End Role="tblPedido" EntitySet="tblPedidoes" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Detalle_P__idPro__787EE5A0" Association="Self.FK__Detalle_P__idPro__787EE5A0">
+            <End Role="tblProducto" EntitySet="tblProductoes" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblEmplea__idCar__4F7CD00D" Association="Self.FK__tblEmplea__idCar__4F7CD00D">
+            <End Role="tblCargo" EntitySet="tblCargoes" />
+            <End Role="tblEmpleado" EntitySet="tblEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__Activ__398D8EEE" Association="Self.FK__tblProduc__Activ__398D8EEE">
+            <End Role="tblClasifcProducto" EntitySet="tblClasifcProductoes" />
+            <End Role="tblProducto" EntitySet="tblProductoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblClient__idGen__5EBF139D" Association="Self.FK__tblClient__idGen__5EBF139D">
+            <End Role="tblGenero" EntitySet="tblGeneroes" />
+            <End Role="tblCliente" EntitySet="tblClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblClient__idTip__5DCAEF64" Association="Self.FK__tblClient__idTip__5DCAEF64">
+            <End Role="tbltipoDoc" EntitySet="tbltipoDocs" />
+            <End Role="tblCliente" EntitySet="tblClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDirecc__idCli__656C112C" Association="Self.FK__tblDirecc__idCli__656C112C">
+            <End Role="tblCliente" EntitySet="tblClientes" />
+            <End Role="tblDireccionCliente" EntitySet="tblDireccionClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idCli__6A30C649" Association="Self.FK__tblPedido__idCli__6A30C649">
+            <End Role="tblCliente" EntitySet="tblClientes" />
+            <End Role="tblPedido" EntitySet="tblPedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTelefo__idCli__628FA481" Association="Self.FK__tblTelefo__idCli__628FA481">
+            <End Role="tblCliente" EntitySet="tblClientes" />
+            <End Role="tblTelefonoCliente" EntitySet="tblTelefonoClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCuidad__idDpt__47DBAE45" Association="Self.FK__tblCuidad__idDpt__47DBAE45">
+            <End Role="tblDepartamento" EntitySet="tblDepartamentoes" />
+            <End Role="tblCuidad" EntitySet="tblCuidads" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDirecc__idCui__5441852A" Association="Self.FK__tblDirecc__idCui__5441852A">
+            <End Role="tblCuidad" EntitySet="tblCuidads" />
+            <End Role="tblDireccionEmpleado" EntitySet="tblDireccionEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDirecc__idCui__66603565" Association="Self.FK__tblDirecc__idCui__66603565">
+            <End Role="tblCuidad" EntitySet="tblCuidads" />
+            <End Role="tblDireccionCliente" EntitySet="tblDireccionClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idPed__6FE99F9F" Association="Self.FK__tblPedido__idPed__6FE99F9F">
+            <End Role="tblDireccionCliente" EntitySet="tblDireccionClientes" />
+            <End Role="tblPedido_Direc" EntitySet="tblPedido_Direc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDirecc__idEmp__534D60F1" Association="Self.FK__tblDirecc__idEmp__534D60F1">
+            <End Role="tblEmpleado" EntitySet="tblEmpleadoes" />
+            <End Role="tblDireccionEmpleado" EntitySet="tblDireccionEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblEmplea__Activ__4E88ABD4" Association="Self.FK__tblEmplea__Activ__4E88ABD4">
+            <End Role="tblGenero" EntitySet="tblGeneroes" />
+            <End Role="tblEmpleado" EntitySet="tblEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblEmplea__idTip__5070F446" Association="Self.FK__tblEmplea__idTip__5070F446">
+            <End Role="tbltipoDoc" EntitySet="tbltipoDocs" />
+            <End Role="tblEmpleado" EntitySet="tblEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTelefo__idEmp__5812160E" Association="Self.FK__tblTelefo__idEmp__5812160E">
+            <End Role="tblEmpleado" EntitySet="tblEmpleadoes" />
+            <End Role="tblTelefonoEmpleado" EntitySet="tblTelefonoEmpleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUsuari__Activ__5AEE82B9" Association="Self.FK__tblUsuari__Activ__5AEE82B9">
+            <End Role="tblEmpleado" EntitySet="tblEmpleadoes" />
+            <End Role="tblUsuario" EntitySet="tblUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idFor__6D0D32F4" Association="Self.FK__tblPedido__idFor__6D0D32F4">
+            <End Role="tblFormaDePago" EntitySet="tblFormaDePagoes" />
+            <End Role="tblPedido" EntitySet="tblPedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idPed__70DDC3D8" Association="Self.FK__tblPedido__idPed__70DDC3D8">
+            <End Role="tblPedido" EntitySet="tblPedidoes" />
+            <End Role="tblPedido_Direc" EntitySet="tblPedido_Direc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idPro__693CA210" Association="Self.FK__tblPedido__idPro__693CA210">
+            <End Role="tblProducto" EntitySet="tblProductoes" />
+            <End Role="tblPedido" EntitySet="tblPedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idTip__6C190EBB" Association="Self.FK__tblPedido__idTip__6C190EBB">
+            <End Role="tblTipo_Venta" EntitySet="tblTipo_Venta" />
+            <End Role="tblPedido" EntitySet="tblPedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPedido__idUsu__6B24EA82" Association="Self.FK__tblPedido__idUsu__6B24EA82">
+            <End Role="tblUsuario" EntitySet="tblUsuarios" />
+            <End Role="tblPedido" EntitySet="tblPedidoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTelefo__idTip__619B8048" Association="Self.FK__tblTelefo__idTip__619B8048">
+            <End Role="tblTipoTel" EntitySet="tblTipoTels" />
+            <End Role="tblTelefonoCliente" EntitySet="tblTelefonoClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTelefo__idEmp__571DF1D5" Association="Self.FK__tblTelefo__idEmp__571DF1D5">
+            <End Role="tblTipoTel" EntitySet="tblTipoTels" />
+            <End Role="tblTelefonoEmpleado" EntitySet="tblTelefonoEmpleadoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbFruverModelStoreContainer" CdmEntityContainer="dbFruverEntities">
+          <EntitySetMapping Name="Detalle_Pedido">
+            <EntityTypeMapping TypeName="dbFruverModel.Detalle_Pedido">
+              <MappingFragment StoreEntitySet="Detalle_Pedido">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+                <ScalarProperty Name="TotalPagar" ColumnName="TotalPagar" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="CodigoPedido" ColumnName="CodigoPedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCargoes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblCargo">
+              <MappingFragment StoreEntitySet="tblCargo">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClasifcProductoes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblClasifcProducto">
+              <MappingFragment StoreEntitySet="tblClasifcProducto">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClientes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblCliente">
+              <MappingFragment StoreEntitySet="tblCliente">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="idTipoDoc" ColumnName="idTipoDoc" />
+                <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="NroDoc" ColumnName="NroDoc" />
+                <ScalarProperty Name="Tipo_Cliente" ColumnName="Tipo_Cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCuidads">
+            <EntityTypeMapping TypeName="dbFruverModel.tblCuidad">
+              <MappingFragment StoreEntitySet="tblCuidad">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idDpto" ColumnName="idDpto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDepartamentoes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblDepartamento">
+              <MappingFragment StoreEntitySet="tblDepartamento">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDireccionClientes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblDireccionCliente">
+              <MappingFragment StoreEntitySet="tblDireccionCliente">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idCuidad" ColumnName="idCuidad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDireccionEmpleadoes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblDireccionEmpleado">
+              <MappingFragment StoreEntitySet="tblDireccionEmpleado">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="idCuidad" ColumnName="idCuidad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpleadoes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblEmpleado">
+              <MappingFragment StoreEntitySet="tblEmpleado">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="NroDoc" ColumnName="NroDoc" />
+                <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+                <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+                <ScalarProperty Name="idTipoDoc" ColumnName="idTipoDoc" />
+                <ScalarProperty Name="fecha_Ingreso" ColumnName="fecha_Ingreso" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFormaDePagoes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblFormaDePago">
+              <MappingFragment StoreEntitySet="tblFormaDePago">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGeneroes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblGenero">
+              <MappingFragment StoreEntitySet="tblGenero">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPedidoes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblPedido">
+              <MappingFragment StoreEntitySet="tblPedido">
+                <ScalarProperty Name="Numero_Pedido" ColumnName="Numero_Pedido" />
+                <ScalarProperty Name="Fecha_Pedido" ColumnName="Fecha_Pedido" />
+                <ScalarProperty Name="Fecha_Entrega" ColumnName="Fecha_Entrega" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idTipoVenta" ColumnName="idTipoVenta" />
+                <ScalarProperty Name="idFormaPago" ColumnName="idFormaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPedido_Direc">
+            <EntityTypeMapping TypeName="dbFruverModel.tblPedido_Direc">
+              <MappingFragment StoreEntitySet="tblPedido_Direc">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductoes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblProducto">
+              <MappingFragment StoreEntitySet="tblProducto">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo_Clasif" ColumnName="Codigo_Clasif" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTelefonoClientes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblTelefonoCliente">
+              <MappingFragment StoreEntitySet="tblTelefonoCliente">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="NumTelefono" ColumnName="NumTelefono" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="idTipoTel" ColumnName="idTipoTel" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTelefonoEmpleadoes">
+            <EntityTypeMapping TypeName="dbFruverModel.tblTelefonoEmpleado">
+              <MappingFragment StoreEntitySet="tblTelefonoEmpleado">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="NumTelefono" ColumnName="NumTelefono" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="idTipoTel" ColumnName="idTipoTel" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTipo_Venta">
+            <EntityTypeMapping TypeName="dbFruverModel.tblTipo_Venta">
+              <MappingFragment StoreEntitySet="tblTipo_Venta">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbltipoDocs">
+            <EntityTypeMapping TypeName="dbFruverModel.tbltipoDoc">
+              <MappingFragment StoreEntitySet="tbltipoDoc">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTipoTels">
+            <EntityTypeMapping TypeName="dbFruverModel.tblTipoTel">
+              <MappingFragment StoreEntitySet="tblTipoTel">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsuarios">
+            <EntityTypeMapping TypeName="dbFruverModel.tblUsuario">
+              <MappingFragment StoreEntitySet="tblUsuario">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Codigo_Empleado" ColumnName="Codigo_Empleado" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

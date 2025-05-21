@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Maestro de Inscripciones</title>
+    <!-- Scripts Base Sup -->
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link href="Estilos/css/all.min.css" rel="stylesheet" />
+    <!-- Select2 -->
+    <link href="Estilos/select2.min.css" rel="stylesheet" />
+    <link href="Estilos/select2-bootstrap4.min.css" rel="stylesheet" />
+    <!--Estilos para las tablas(datatables)-->
+    <link href="Estilos/dataTables.min.css" rel="stylesheet" />
+    <link href="Estilos/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="Estilos/adminlte.min.css" rel="stylesheet" />
+
+    <style>
+        .label_1 {
+            width: 100%;
+            height: 30px;
+            border-radius: 5px;
+            background-color: #f2eded;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        .label_2 {
+            width: 100%;
+            height: 30px;
+            border-radius: 5px;
+            background-color: #f2eded;
+            border-style: solid;
+            border-width: 1px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12" id="dvMenu">
+                    <!-- Para incrustar la página que contiene el ménu de navegación-->
+                </div>
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Registro de Pedido</h3>
+                        </div>
+                        <form id="frmDatosIn">
+                            <div class="card-body">
+                                <div class="card card-gray-dark">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Datos de Entrada</h3>
+                                    </div>
+
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtNumeroPedido">Número de Pedido</label>
+                                                    <input type="text" class="form-control" id="txtNumeroPedido" placeholder="Generado automáticamente" disabled>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtCodigoCliente">Usuario del Empleado</label>
+                                                    <input type="number" class="form-control" id="txtCodigoCliente" placeholder="Ingrese Código del Cliente" disabled>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="fechaEntrega">Fecha de Entrega</label>
+                                                    <input type="date" class="form-control" id="fechaEntrega">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="lbFechaAct">Fecha actual</label>
+                                                    <input id="lbFechaAct" class="form-control" disabled />
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                        <div class="row">
+
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="txtCodigoCliente">Nro de Documento de Cliente</label>
+                                                    <input type="text" class="form-control" id="txtCodigoCliente" placeholder="Ingrese Código del Cliente" onkeyup="obtenerPedidos()">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtNombreCliente">Nombre del Cliente</label>
+                                                    <input type="text" class="form-control" id="txtNombreCliente" disabled>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtApellidoCliente">Apellido del Cliente</label>
+                                                    <input type="text" class="form-control" id="txtApellidoCliente" disabled>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="txtIDProducto">ID del Producto</label>
+                                                    <input type="text" class="form-control" id="txtIDProducto" placeholder="Ingrese ID del Producto">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="txtNombreProducto">Nombre del Producto</label>
+                                                    <input type="text" class="form-control" id="txtNombreCliente" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="cboTipoVenta">Tipo de Venta</label>
+                                                    <select id="cboTipoVenta" class="form-control">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="cboFormaPg">Forma de Pago</label>
+                                                    <select id="cboFormaPg" class="form-control">
+                                                        <!-- Las opciones se llenarán dinámicamente aquí -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="fechaEntrega">Fecha de Entrega</label>
+                                                    <input type="date" class="form-control" id="fechaEntrega">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="chkDomicilio">
+                                                    <label class="form-check-label" for="chkDomicilio">¿Domicilio?</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2" id="direccionesContainer" style="display: none;">
+                                                <div class="form-group">
+                                                    <label for="cboDirecciones">Seleccione Dirección</label>
+                                                    <select id="cboDirecciones" class="form-control">
+                                                        <!-- Las direcciones se llenarán dinámicamente aquí -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Acá para más rows para datos -->
+                                    </div>
+
+
+
+                                    <!-- Menú de Opciones -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <button type="button" id="btnAgre" class="btn-block btn-lg btn-primary">Agregar</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <button type="button" id="btnModi" class="btn-block btn-lg btn-primary">Modificar</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <button type="button" id="btnBusc" class="btn-block btn-lg btn-primary">Buscar</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <button type="button" id="btnCanc" class="btn-block btn-lg btn-primary">Cancelar</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <button type="button" id="btnImpr" class="btn-block btn-lg btn-primary">Impresión</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Zona de Mensajes -->
+                                        <div class="card-footer">
+                                            <div id="dvMensaje" class=""></div>
+                                        </div>
+
+                                        <!-- Fin Menú de Opciones-->
+                                    </div>
+                                </div><!-- card card-gray-dark -->
+                                <!-- Acá row para la tabla -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- Tabla de Historial de Pedidos -->
+                                        <h4>Detalle del Pedido</h4>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <table id="tablaPedidos" class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Código</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Precio Unitario</th>
+                                                            <th>Total a Pagar</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- Aquí se llenarán las filas con los pedidos -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- Fin row para la tabla -->
+
+                            </div>  <!-- /.card-body -->
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Para los script de uso -->
+    <script src="../Scripts/jquery-3.4.1.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="../Scripts/select2.min.js"></script>
+    <script src="Scripts/Comunes/Combos.js"></script>
+    <!-- Tabla -->
+    <script src="../Scripts/jquery.dataTables.min.js"></script>
+    <script src="../Scripts/dataTables.bootstrap4.min.js"></script>
+    <!--Librerías comunes de JavaScript para las Tablas -->
+    <script src="Scripts/Comunes/Tablas.js"></script>
+    <!-- Para el script de control del form -->
+    <script src="Scripts/Comunes/frmPedido.js"></script>
+</body>
+</html>
